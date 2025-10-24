@@ -1,0 +1,14 @@
+<svg width="1225" height="933" viewBox="0 0 1225 933" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Solid orange background -->
+  <rect x="-215" y="-27" width="1440" height="960" fill="#F25A06"/>
+
+  <!-- Gradient overlay -->
+  <rect x="-215" y="-27" width="1440" height="960" fill="url(#paint0_linear_1_7829)"/>
+
+  <defs>
+    <linearGradient id="paint0_linear_1_7829" x1="1225" y1="453" x2="-215" y2="453" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E0802" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0F0802"/>
+    </linearGradient>
+  </defs>
+</svg>

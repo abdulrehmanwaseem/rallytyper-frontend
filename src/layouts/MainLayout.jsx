@@ -10,7 +10,7 @@ const MainLayout = () => {
       <div
         className="fixed inset-0"
         style={{
-          backgroundImage: `url('/images/hero-bg.png')`,
+          backgroundImage: `url('/images/bg-hero.svg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

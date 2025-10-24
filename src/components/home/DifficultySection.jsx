@@ -1,19 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import DifficultyCard from "./DifficultyCard";
 
 const DifficultySection = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState("NORMAL");
+  const navigate = useNavigate();
 
   const difficulties = ["NOOB", "EASY", "NORMAL", "HARD", "ADVANCE"];
 
+  const handleStartGame = () => {
+    const difficultyIndex = difficulties.indexOf(selectedDifficulty);
+    navigate("/game", { state: { difficulty: difficultyIndex } });
+  };
+
   return (
-    <section className="py-20 px-6 bg-brand-dark-1">
+    <section id="difficulty" className="py-20 px-6 bg-brand-dark-1">
       <div className="container mx-auto space-y-14 max-w-4xl">
         {/* Title */}
         <div className="relative">
           <div
-            className="bg-contain bg-center bg-no-repeat py-8 px-8 text-center min-h-[120px] flex items-start justify-center pt-4"
+            className="bg-contain bg-center bg-no-repeat py-8 px-8 text-center min-h-[120px] flex items-start justify-center pt-5"
             style={{ backgroundImage: "url('/images/choose-difficulty.svg')" }}
           >
             <h2
@@ -49,6 +56,7 @@ const DifficultySection = () => {
               minWidth: "200px",
               minHeight: "100px",
             }}
+            onClick={handleStartGame}
           >
             <div className="flex items-center justify-center gap-3">
               <img src="/images/play.svg" alt="Play" className="w-10 h-10" />

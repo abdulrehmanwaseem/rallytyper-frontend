@@ -2,10 +2,13 @@ import React from "react";
 
 const AboutSection = () => {
   return (
-    <section className="py-20 px-6 bg-[#1A130B]">
+    <section className="py-20 px-6 bg-black -mt-10">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
-          <h2 className="text-white text-4xl md:text-5xl font-bold mb-8">
+          <h2
+            className="text-white text-4xl md:text-6xl font-medium mb-8"
+            style={{ fontFamily: "Anton, sans-serif" }}
+          >
             A Fun & Free Game to Boost Typing Speed
           </h2>
 
@@ -14,23 +17,20 @@ const AboutSection = () => {
               Looking for an exciting way to boost your typing speed? RallyTyper
               makes learning fun by turning typing practice into an
               adrenaline-pumping race. Whether you're preparing for a typing
-              test or just looking to improve your skills, our game offers a
-              unique way to enhance and improve every time you play. Practice
-              for Classrooms & Learning Why should you play typing games?
-              Because they enhance, improve, prevent boredom & offer quick boost
-              to concentration. Whether you are looking to join online
-              competitions, improve your typing speed, beat your friends or just
-              have fun – you've come to the right place.
-            </p>
-
-            <p>
-              Thrill of RallyTyper's fast-paced, race-based format!Complete
-              quests, unlock new vehicles & explore the Global Leaderboard &
-              Discover top typists & rivals!Leaderboards & Discover top typists
-              & rivals! You've got friends to make and opponents to beat – and
-              see if you have what it takes to race to the top. With fun & free
-              games to boost typing speed, RallyTyper is the ultimate way to
-              challenge yourself while representing your country with pride!
+              test or just looking to sharpen your skills, our game keeps you
+              engaged and improving every time you play. Perfect for Classrooms
+              & Learning Why should you play typing games? Because they enhance
+              focus, improve hand-eye coordination, and help you boost your
+              typing speed while keeping learning exciting. While there are many
+              games for improving your typing speed, none match the thrill of
+              RallyTyper's fast-paced, race-based format!Compete on the Global
+              Leaderboard & Represent Your Country! Think you're fast enough to
+              make the leaderboard? RallyTyper is the only game that features a
+              Top 20 Leaderboard, recognizing the best typists from around the
+              world! Enter your country, test your skills with our typing test,
+              and see if you have what it takes to race to the top.With fun &
+              free games to boost typing speed, RallyTyper is the ultimate way
+              to challenge yourself while representing your country with pride!
             </p>
           </div>
         </div>

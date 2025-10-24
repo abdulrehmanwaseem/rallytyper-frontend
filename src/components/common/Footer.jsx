@@ -3,21 +3,48 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const companyLinks = [
-    { name: "Story", path: "/story" },
-    { name: "Download", path: "/download" },
+    { name: "Leaderboard", path: "/leaderboard" },
+    { name: "Maps", path: "/maps" },
+    { name: "Login", path: "/login" },
     { name: "Blog", path: "/blog" },
     { name: "Contact Us", path: "/contact" },
   ];
 
   const socialMedia = [
-    { name: "Twitter", icon: "𝕏", url: "#", color: "hover:text-white" },
-    { name: "Instagram", icon: "📷", url: "#", color: "hover:text-pink-500" },
-    { name: "Facebook", icon: "f", url: "#", color: "hover:text-blue-500" },
+    {
+      name: "X",
+      icon: "/images/x-icon.svg",
+      url: "#",
+      color: "hover:text-white",
+    },
+    {
+      name: "Instagram",
+      icon: "/images/instagram-icon.svg",
+      url: "#",
+      color: "hover:text-pink-500",
+    },
+    {
+      name: "Facebook",
+      icon: "/images/facebook-icon.svg",
+      url: "#",
+      color: "hover:text-blue-500",
+    },
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-[#2B231B] to-[#1A130B] border-t border-[#48443E]">
-      <div className="container mx-auto px-6 lg:px-12 py-12">
+    <footer className="relative overflow-hidden bg-linear-to-r from-black to-brand">
+      {/* Background Pattern */}
+      <div
+        className="absolute inset-0 opacity-60"
+        style={{
+          backgroundImage: "url('/images/bg-hero.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+
+      <div className="container mx-auto px-6 lg:px-12 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
@@ -25,13 +52,15 @@ const Footer = () => {
               <img
                 src="/images/logo.svg"
                 alt="RallyTyper Logo"
-                className="h-12 w-auto"
+                className="h-14 w-auto"
               />
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/80 text-sm leading-relaxed max-w-xs">
               Get ready for a high-speed challenge where your typing skills
-              determine your success! All while having fun. Best of all, it's a
-              free typing game online that helps you improve with every race!
+              determine your success! Compete in thrilling races, challenge
+              players from around the world, and climb the global leaderboard,
+              it's a free typing game online that helps you improve with every
+              race!
             </p>
           </div>
 
@@ -43,7 +72,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-gray-400 hover:text-[#F25A06] transition-colors duration-200 text-sm"
+                    className="text-white/80 hover:text-[#F25A06] transition-colors duration-200 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -62,15 +91,22 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-12 h-12 rounded-lg bg-[#1A130B] flex items-center justify-center text-white text-xl transition-all duration-300 hover:bg-[#F25A06] ${social.color} hover:scale-110`}
+                  className={`w-12 h-12 rounded-lg bg-[#1A130B] flex items-center justify-center transition-all duration-300 hover:bg-[#F25A06] hover:scale-110`}
                   aria-label={social.name}
                 >
-                  {social.icon}
+                  <img
+                    src={social.icon}
+                    alt={`${social.name} icon`}
+                    className={`object-contain ${
+                      social.name === "X" ? "invert w-6 h-6" : "w-8 h-8"
+                    }`}
+                  />
                 </a>
               ))}
             </div>
-            <p className="text-gray-400 text-sm">
-              Follow Us on X @Rallytyper and Instagram @Rallytyper
+            <p className="text-white/80 text-sm max-w-xs">
+              Follow Up on X, Instagram and Facebook and share your typing
+              journey with friends and family{" "}
             </p>
           </div>
         </div>

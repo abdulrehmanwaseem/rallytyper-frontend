@@ -4,47 +4,53 @@ const BlogSection = () => {
   const blogs = [
     {
       id: 1,
-      title: "Mastering the Art of Typing: 7 Proven Tips to Typing Game",
-      author: "Abdul Rehman",
-      date: "August 28, 2025",
-      image: "/images/blog1.jpg",
+      title: "The Evolution of Typing Skills: From Typewriters to Typing Games",
+      author: "Elizabeth Slavin",
+      date: "August 20, 2022",
+      category: "Technology",
+      image: "/images/blog.png",
     },
     {
       id: 2,
       title:
-        "Speed vs. Accuracy: What Matters More When Improving Your Typing Skills",
-      author: "Samantha Bloom",
-      date: "October 8, 2025",
-      image: "/images/blog2.jpg",
+        "Real-Life Applications of Typing Skills: Why Speed and Accuracy Matter",
+      author: "Elizabeth Slavin",
+      date: "August 20, 2022",
+      category: "Technology",
+      image: "/images/blog.png",
     },
     {
       id: 3,
-      title: "Exploring the Competitive World of Speed and Judgment Tournament",
-      author: "Belly Smith",
-      date: "August 22, 2023",
-      image: "/images/blog3.jpg",
+      title:
+        "Real-Life Applications of Typing Skills: Why Speed and Accuracy Matter",
+      author: "Elizabeth Slavin",
+      date: "August 20, 2022",
+      category: "Technology",
+      image: "/images/blog.png",
     },
   ];
 
   return (
-    <section className="py-20 px-6 bg-[#1A130B]">
+    <section className="py-24 px-6 bg-black">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-white text-4xl md:text-5xl font-bold text-center mb-16">
+        <h2
+          className="text-white text-4xl md:text-6xl text-center font-medium mb-16"
+          style={{ fontFamily: "Anton, sans-serif" }}
+        >
           Our Blogs
         </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-[#2B231B] rounded-xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#F25A06]/20 transition-all duration-300 hover:-translate-y-2 cursor-pointer group"
+              className="bg-linear-to-b from-[#3D2820] to-[#1A0F0A] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
             >
               {/* Image */}
-              <div className="h-48 bg-gradient-to-br from-[#48443E] to-[#302D29] overflow-hidden">
+              <div className="relative h-60 p-4  overflow-hidden">
                 <img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
                     e.target.style.display = "none";
                   }}
@@ -52,24 +58,35 @@ const BlogSection = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <div className="bg-[#F25A06] text-white text-xs font-semibold px-3 py-1 rounded-full inline-block mb-3">
-                  Technology
+              <div className="p-5">
+                {/* Category Badge */}
+                <div className="mb-3">
+                  <span className="text-gray-300 text-sm font-medium">
+                    {blog.category}
+                  </span>
                 </div>
 
-                <h3 className="text-white text-lg font-bold mb-4 leading-snug group-hover:text-[#F25A06] transition-colors">
+                {/* Title */}
+                <h3 className="text-white text-xl font-semibold mb-4 leading-tight line-clamp-3">
                   {blog.title}
                 </h3>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#1A130B] flex items-center justify-center">
-                    <span className="text-sm">👤</span>
+                {/* Author Info */}
+                <div className="flex items-center gap-3 pt-3 border-t border-gray-700/50">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center overflow-hidden">
+                    <img
+                      src={`https://i.pravatar.cc/150?u=${blog.author}`}
+                      alt={blog.author}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="text-sm">
-                    <div className="text-white font-semibold">
+                  <div className="flex justify-between w-[85%]">
+                    <div className="text-white/90 font-semibold text-sm">
                       {blog.author}
                     </div>
-                    <div className="text-gray-400 text-xs">{blog.date}</div>
+                    <div className="text-gray-400 text-xs mt-0.5">
+                      {blog.date}
+                    </div>
                   </div>
                 </div>
               </div>
