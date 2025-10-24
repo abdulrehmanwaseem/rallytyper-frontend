@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <rect width="1200" height="600" fill="#1A130B"/>
+  <!-- Simplified world map outline -->
+  <g fill="#48443E" stroke="#302D29" stroke-width="1">
+    <!-- North America -->
+    <path d="M150,100 L200,80 L250,90 L280,120 L270,180 L240,200 L200,190 L170,150 Z"/>
+    <!-- South America -->
+    <path d="M280,300 L300,280 L320,290 L340,320 L330,380 L310,420 L290,400 L270,350 Z"/>
+    <!-- Europe -->
+    <path d="M500,100 L550,90 L580,110 L570,150 L540,160 L510,140 Z"/>
+    <!-- Africa -->
+    <path d="M520,200 L570,190 L600,220 L590,300 L560,350 L530,340 L510,280 Z"/>
+    <!-- Asia -->
+    <path d="M600,80 L750,70 L850,90 L900,120 L880,200 L820,220 L750,200 L680,180 L620,140 Z"/>
+    <!-- Australia -->
+    <path d="M850,350 L920,340 L950,370 L940,410 L900,420 L860,400 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
+
+const MainLayout = () => {
+  return (
+    <div className="min-h-screen bg-[#1A130B] relative">
+      {/* Background Pattern - Spans entire layout */}
+      <div
+        className="fixed inset-0"
+        style={{
+          backgroundImage: `url('/images/hero-bg.png')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          zIndex: 0,
+        }}
+      />
+
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default MainLayout;

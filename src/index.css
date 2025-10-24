@@ -1,7 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* NATS Font */
+@font-face {
+  font-family: "NATS Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("NATS Regular"), url("/fonts/NATS-Regular.woff") format("woff");
+}
 
 :root {
   /* Force light theme */
@@ -39,6 +50,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --brand: #f25a06;
+  --brand-dark-1: #1a130b;
+  --brand-dark-2: #302d29;
+  --brand-dark-3: #2b231b;
+  --brand-dark-4: #48443e;
+  --brand-blue: #312244;
+  --brand-yellow: #ffca28;
+  --brand-cyan: #22d3ee;
+  --brand-gold: #fbbf24;
+  --brand-pink: #f9a8d4;
 }
 
 @theme inline {
@@ -77,6 +98,16 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand: var(--brand);
+  --color-brand-dark-1: var(--brand-dark-1);
+  --color-brand-dark-2: var(--brand-dark-2);
+  --color-brand-dark-3: var(--brand-dark-3);
+  --color-brand-dark-4: var(--brand-dark-4);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-pink: var(--brand-pink);
 }
 
 .dark {
@@ -125,6 +156,7 @@
 /* Base styles */
 html,
 body {
+  font-family: "Poppins", sans-serif;
   scroll-behavior: auto; /* Prevent smooth scrolling during load */
   color-scheme: light !important;
   margin: 0;
