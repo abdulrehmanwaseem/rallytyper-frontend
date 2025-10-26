@@ -2,9 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 /* NATS Font */
@@ -35,9 +38,9 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: 0.63 0.2 30;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -52,10 +55,13 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --brand: #f25a06;
+  --brand-cream: #fffaec;
   --brand-dark-1: #1a130b;
   --brand-dark-2: #302d29;
   --brand-dark-3: #2b231b;
   --brand-dark-4: #48443e;
+  --brand-dark-5: #2c1302;
+
   --brand-blue: #312244;
   --brand-yellow: #ffca28;
   --brand-cyan: #22d3ee;
@@ -100,10 +106,12 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-brand: var(--brand);
+  --color-brand-white-1: var(--brand-cream);
   --color-brand-dark-1: var(--brand-dark-1);
   --color-brand-dark-2: var(--brand-dark-2);
   --color-brand-dark-3: var(--brand-dark-3);
   --color-brand-dark-4: var(--brand-dark-4);
+  --color-brand-dark-5: var(--brand-dark-5);
   --color-brand-blue: var(--brand-blue);
   --color-brand-yellow: var(--brand-yellow);
   --color-brand-cyan: var(--brand-cyan);

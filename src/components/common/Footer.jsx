@@ -1,3 +1,4 @@
+import { Copyright } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -91,7 +92,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-12 h-12 rounded-lg bg-[#1A130B] flex items-center justify-center transition-all duration-300 hover:bg-[#F25A06] hover:scale-110`}
+                  className={`w-12 h-12 rounded-lg bg-brand-dark-1 flex items-center justify-center transition-all duration-300 hover:bg-[#F25A06] hover:scale-110`}
                   aria-label={social.name}
                 >
                   <img
@@ -112,8 +113,13 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-[#48443E] mt-12 pt-6 text-center">
-          <p className="text-gray-500 text-sm">Copyright 2025, Rally Typer</p>
+        <div className="border-t border-gray-500 mt-12 pt-6 text-center">
+          <p className="flex items-center justify-center gap-1 text-gray-400 text-sm font-medium">
+            <Copyright className="w-4 h-4 mb-0.5" />
+            <span>
+              {new Date().getFullYear()} Rally Typer. All rights reserved.
+            </span>
+          </p>
         </div>
       </div>
     </footer>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { getFlagUrl } from "@/lib/utils";
 
 const HeroSection = () => {
   const topPlayers = [
@@ -7,7 +8,7 @@ const HeroSection = () => {
       rank: 2,
       username: "Vazani",
       subtitle: "Mr. Vichar",
-      flag: "🇺🇸",
+      flagCode: "US",
       accuracy: "98%",
       wpm: "98 WPM",
       avatar: "https://i.pravatar.cc/150?img=12",
@@ -18,7 +19,7 @@ const HeroSection = () => {
       rank: 1,
       username: "Imran",
       subtitle: "Imran Sidat",
-      flag: "🇨🇳",
+      flagCode: "EN",
       accuracy: "97%",
       wpm: "97 WPM",
       avatar: "https://i.pravatar.cc/150?img=33",
@@ -29,7 +30,7 @@ const HeroSection = () => {
       rank: 3,
       username: "Jonathan",
       subtitle: "Mr. WSM",
-      flag: "🇧🇷",
+      flag: "BR",
       accuracy: "96%",
       wpm: "95 WPM",
       avatar: "https://i.pravatar.cc/150?img=11",
@@ -41,7 +42,7 @@ const HeroSection = () => {
   const leaderboardPlayers = [
     {
       username: "USMAN",
-      flagCode: "us",
+      flagCode: "US",
       accuracy: "98%",
       wpm: "87 WPM",
       avatar: topPlayers[0].avatar,
@@ -49,7 +50,7 @@ const HeroSection = () => {
     },
     {
       username: "JOS",
-      flagCode: "cn",
+      flagCode: "CN",
       accuracy: "97%",
       wpm: "87 WPM",
       avatar: topPlayers[1].avatar,
@@ -57,7 +58,7 @@ const HeroSection = () => {
     },
     {
       username: "DAN",
-      flagCode: "br",
+      flagCode: "BR",
       accuracy: "96%",
       wpm: "85 WPM",
       avatar: topPlayers[2].avatar,
@@ -65,35 +66,35 @@ const HeroSection = () => {
     },
     {
       username: "JOS",
-      flagCode: "ng",
+      flagCode: "NG",
       accuracy: "95%",
       wpm: "85 WPM",
       avatar: null,
     },
     {
       username: "JOS",
-      flagCode: "ar",
+      flagCode: "AR",
       accuracy: "92%",
       wpm: "85 WPM",
       avatar: null,
     },
     {
       username: "JOS",
-      flagCode: "pk",
+      flagCode: "PK",
       accuracy: "91%",
       wpm: "85 WPM",
       avatar: null,
     },
     {
       username: "JOS",
-      flagCode: "ie",
+      flagCode: "IE",
       accuracy: "99%",
       wpm: "85 WPM",
       avatar: null,
     },
     {
       username: "JOS",
-      flagCode: "us",
+      flagCode: "US",
       accuracy: "89%",
       wpm: "85 WPM",
       avatar: null,
@@ -138,7 +139,7 @@ const HeroSection = () => {
             {/* Leaderboard Header */}
             <div className="text-center mb-2">
               <h2
-                className="text-white text-2xl lg:text-4xl font-bold mb-16"
+                className="text-white text-2xl lg:text-4xl text-shadow-lg font-bold mb-16"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 OUR TOP PLAYERS
@@ -204,11 +205,11 @@ const HeroSection = () => {
             </div>
 
             {/* Leaderboard Table */}
-            <div className="space-y-1 ">
+            <div className="space-y-1">
               {/* Table Header */}
               <div
-                className="grid grid-cols-3 gap-4 bg-brand-dark-4 px-8 py-3 mb-3 rounded-xl text-white font-bold text-sm uppercase"
-                style={{ fontFamily: "Poppins, sans-serif" }}
+                className="grid grid-cols-[1.5fr_1fr_1fr] gap-4 bg-brand-dark-4 px-8 py-3 mb-3 rounded-xl text-white font-bold text-sm uppercase"
+                style={{ fontFamily: "Nunito, sans-serif" }}
               >
                 <div>USERNAME</div>
                 <div className="text-center">ACCURACY</div>
@@ -219,9 +220,10 @@ const HeroSection = () => {
               {leaderboardPlayers.map((player, index) => (
                 <div
                   key={index}
-                  className={`grid grid-cols-3 gap-2 px-6 py-2 ${
+                  className={`grid grid-cols-[1.5fr_1fr_1fr] gap-2 px-6 py-2 ${
                     player.bgColor || "bg-brand-dark-4"
-                  } rounded-xl border-none hover:brightness-110 transition-all`}
+                  } rounded-xl border-none hover:brightness-110 transition-all `}
+                  style={{ fontFamily: "Nunito, sans-serif" }}
                 >
                   <div className="flex items-center gap-2">
                     <div
@@ -233,19 +235,19 @@ const HeroSection = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <span className="text-white font-semibold text-base mr-1">
+                    <span className="text-white font-bold text-base mr-1">
                       {player.username}
                     </span>
                     <img
-                      src={`https://flagcdn.com/${player.flagCode}.svg`}
+                      src={getFlagUrl(player.flagCode)}
                       alt={`${player.username} flag`}
-                      className="w-7 object-cover"
+                      className="w-8 object-cover"
                     />
                   </div>
-                  <div className="text-center text-white font-semibold text-base flex items-center justify-center">
+                  <div className="text-center text-white font-bold text-base flex items-center justify-center">
                     {player.accuracy}
                   </div>
-                  <div className="text-center text-white font-semibold text-base flex items-center justify-center">
+                  <div className="text-center text-white font-bold text-base flex items-center justify-center">
                     {player.wpm}
                   </div>
                 </div>

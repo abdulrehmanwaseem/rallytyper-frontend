@@ -16,12 +16,10 @@ const Header = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  // Handle hash scrolling after navigation
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
-        // Small delay to ensure the page has rendered
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 100);
@@ -34,14 +32,12 @@ const Header = () => {
       e.preventDefault();
       const hash = path.split("#")[1];
 
-      // If we're already on the home page, just scroll
       if (location.pathname === "/") {
         const element = document.getElementById(hash);
         if (element) {
           element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       } else {
-        // Navigate to home page with hash, then let useEffect handle scrolling
         navigate(`/${hash ? `#${hash}` : ""}`);
       }
     }
@@ -90,11 +86,8 @@ const Header = () => {
             </ul>
 
             {/* CTA Button */}
-            <Button
-              variant={"brand"}
-              onClick={(e) => handleNavClick(e, "/#difficulty")}
-            >
-              Play Now
+            <Button variant={"brand"} onClick={() => navigate("/auth/login")}>
+              Login
             </Button>
           </div>
           {/* Mobile Menu Button */}
