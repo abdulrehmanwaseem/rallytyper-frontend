@@ -1,7 +1,21 @@
 {
   "buildCommand": "npm install --legacy-peer-deps && npm run build",
-  "rewrites": [
-    { "source": "/game/:path*", "destination": "/game/:path*" },
-    { "source": "/(.*)", "destination": "/" }
+  "routes": [
+    {
+      "src": "/game/assets/(.*)",
+      "dest": "/game/assets/$1"
+    },
+    {
+      "src": "/game/index.html",
+      "dest": "/game/index.html"
+    },
+    {
+      "src": "/game",
+      "dest": "/game/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }

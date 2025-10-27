@@ -13,18 +13,10 @@ export default defineConfig({
     },
   },
   publicDir: "public",
-  build: {
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, "index.html"),
-        game: path.resolve(__dirname, "game/index.html"),
-      },
-    },
-  },
   server: {
     fs: {
-      // Allow serving files from the game directory
-      allow: [".", "game"],
+      // Allow serving files from the public directory
+      allow: [".", "public"],
     },
   },
 });
