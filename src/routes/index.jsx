@@ -5,7 +5,6 @@ import RegisterPage from "@/pages/auth/RegisterPage";
 import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
 import Blogs from "@/pages/blogs";
 import BlogDetails from "@/pages/blogs/blogDetails";
-import GamePage from "@/pages/game";
 import HomePage from "@/pages/home";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -18,10 +17,7 @@ export const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
-      {
-        path: "game",
-        element: <GamePage />,
-      },
+
       {
         path: "blogs",
         element: <Blogs />,

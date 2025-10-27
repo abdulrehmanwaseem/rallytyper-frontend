@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 let formattedTextInitialized = false; // Flag to track initialization
 let formattedTEXT = "";
-const backtoMenu = document.getElementById("back-to-menu");
 
 let initText = function () {
   // fill text div with text
@@ -83,7 +82,6 @@ let initEndingScreen = function () {
   if (car1.finishingTime < car2.finishingTime) place = "2nd Place";
   endingDiv.children[0].textContent = place;
   endingDiv.style.display = "inline-block";
-  backtoMenu.style.display = "none";
 
   // Get user data from window (passed from React app)
   const userData = window.gameUserData || {};
@@ -131,20 +129,15 @@ let initEndingScreen = function () {
     );
   }
 
-  // Auto-submit to leaderboard if user data is available
-  if (userData.username && userData.countryCode && GWAM > 0) {
-    // Call the leaderboard submission function
-    if (typeof submitToLeaderboard === "function") {
-      submitToLeaderboard(gameResults);
-    }
-  }
+  // TODO: Send game results to Express.js backend
+  // You can implement backend submission here
+  console.log("📊 Ready to send to backend:", gameResults);
 };
 
 let countdownTimer; // Variable to store the countdown timer
 
 let startCountdown = function () {
   const duration = 1500;
-  backtoMenu.style.display = "block";
   car1.animations.drive.paused = true;
 
   // Reset countdown elements to their initial state
@@ -337,55 +330,29 @@ let chooseDifficultyLevel = function (difficulty_level) {
   }
 };
 
-let goBackToMenu = function () {
-  finishAnimation();
+// if (document.fullscreenEnabled) {
+//   const fullscreen_button = document.createElement("button");
+//   fullscreen_button.setAttribute("id", "fullscreen-button");
+//   fullscreen_button.addEventListener("click", toggle_fullscreen);
+//   fullscreen_button.innerHTML = `
+// <svg viewBox="0 0 24 24">
+// <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12
+// 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+// </svg>
+// <svg viewBox="0 0 24 24">
+// <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6
+// 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+// </svg>
+// `;
+//   document.body.appendChild(fullscreen_button);
+// }
 
-  // Send quit message to React app
-  if (window.parent && window.parent !== window) {
-    window.parent.postMessage(
-      {
-        type: "GAME_QUIT",
-      },
-      window.location.origin
-    );
-  }
-
-  if (window.opener && !window.opener.closed) {
-    window.opener.postMessage(
-      {
-        type: "GAME_QUIT",
-      },
-      window.location.origin
-    );
-  }
-
-  // Always navigate back to React app home page
-  window.location.href = "/";
-};
-
-if (document.fullscreenEnabled) {
-  const fullscreen_button = document.createElement("button");
-  fullscreen_button.setAttribute("id", "fullscreen-button");
-  fullscreen_button.addEventListener("click", toggle_fullscreen);
-  fullscreen_button.innerHTML = `
-<svg viewBox="0 0 24 24">
-<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 
-7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
-</svg>
-<svg viewBox="0 0 24 24">
-<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 
-11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
-</svg>
-`;
-  document.body.appendChild(fullscreen_button);
-}
-
-function toggle_fullscreen() {
-  if (!document.fullscreenElement) {
-    document.body.requestFullscreen();
-    document.body.setAttribute("fullscreen", "");
-  } else {
-    document.exitFullscreen();
-    document.body.removeAttribute("fullscreen");
-  }
-}
+// function toggle_fullscreen() {
+//   if (!document.fullscreenElement) {
+//     document.body.requestFullscreen();
+//     document.body.setAttribute("fullscreen", "");
+//   } else {
+//     document.exitFullscreen();
+//     document.body.removeAttribute("fullscreen");
+//   }
+// }

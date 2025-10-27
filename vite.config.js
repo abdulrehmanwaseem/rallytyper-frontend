@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "index.html"),
-        game: path.resolve(__dirname, "game/index.html"),
+        // Removed game entry - now using React
       },
     },
     // Ensure assets are properly organized
