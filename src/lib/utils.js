@@ -8,6 +8,5 @@ export function cn(...inputs) {
 
 export const getFlagUrl = (code) => {
   const country = countries.find((c) => c.code === code);
-  console.log("Country found for code", code, ":", country);
   return country?.flag || `https://flagcdn.com/w40/${code.toLowerCase()}.png`; // fallback
 };

@@ -63,7 +63,6 @@ let initEndingScreen = function () {
   statsPs[0].textContent = " Time: " + time + "s ";
   statsPs[1].textContent = " Accuracy: " + accuracy + "% ";
   statsPs[2].textContent = " GWAM: " + GWAM;
-  // console.log( "Car1: " + car1.finishingTime );
 
   // Generate key for current difficulty
   const difficultyNames = ["noob", "easy", "normal", "hard", "advanced"];
@@ -80,17 +79,65 @@ let initEndingScreen = function () {
   // Display the PB for the current difficulty on the end screen
   statsPs[3].textContent = `Personal Best GWAM (${currentLevelName}): ${personalBest}`;
 
-  const leaderboardForm = document.querySelector(".leaderboard-form");
-  const submitButton = leaderboardForm.querySelector("button");
-
-  submitButton.textContent = "Submit to leaderboard";
-  submitButton.disabled = false;
-
-  let token = "1st Place!";
-  if (car1.finishingTime < car2.finishingTime) token = "2nd Place";
-  endingDiv.children[0].textContent = token;
+  let place = "1st Place!";
+  if (car1.finishingTime < car2.finishingTime) place = "2nd Place";
+  endingDiv.children[0].textContent = place;
   endingDiv.style.display = "inline-block";
   backtoMenu.style.display = "none";
+
+  // Get user data from window (passed from React app)
+  const userData = window.gameUserData || {};
+
+  // Prepare game results object
+  const gameResults = {
+    time: time,
+    accuracy: accuracy,
+    gwam: GWAM,
+    personalBest: personalBest,
+    place: place,
+    difficulty: currentLevelName,
+    difficultyLevel: difficulty,
+    username: userData.username || "Guest",
+    country: userData.country || "",
+    countryCode: userData.countryCode || "",
+    playerId: userData.playerId || localStorage.getItem("playerId") || "",
+    timestamp: Date.now(),
+    characters: gameState.stats.characters,
+    mistakes: gameState.stats.mistakes,
+  };
+
+  // Log results to console
+  console.log("🎮 GAME COMPLETED! Results:", gameResults);
+
+  // Send results back to parent window (React app)
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage(
+      {
+        type: "GAME_RESULTS",
+        payload: gameResults,
+      },
+      window.location.origin
+    );
+  }
+
+  // Also send to opener if opened in new window
+  if (window.opener && !window.opener.closed) {
+    window.opener.postMessage(
+      {
+        type: "GAME_RESULTS",
+        payload: gameResults,
+      },
+      window.location.origin
+    );
+  }
+
+  // Auto-submit to leaderboard if user data is available
+  if (userData.username && userData.countryCode && GWAM > 0) {
+    // Call the leaderboard submission function
+    if (typeof submitToLeaderboard === "function") {
+      submitToLeaderboard(gameResults);
+    }
+  }
 };
 
 let countdownTimer; // Variable to store the countdown timer
@@ -293,6 +340,25 @@ let chooseDifficultyLevel = function (difficulty_level) {
 let goBackToMenu = function () {
   finishAnimation();
 
+  // Send quit message to React app
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage(
+      {
+        type: "GAME_QUIT",
+      },
+      window.location.origin
+    );
+  }
+
+  if (window.opener && !window.opener.closed) {
+    window.opener.postMessage(
+      {
+        type: "GAME_QUIT",
+      },
+      window.location.origin
+    );
+  }
+
   // Always navigate back to React app home page
   window.location.href = "/";
 };
@@ -323,12 +389,3 @@ function toggle_fullscreen() {
     document.body.removeAttribute("fullscreen");
   }
 }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   var myButton = document.getElementById("fullscreen-button");
-
-//   myButton.addEventListener("click", function () {
-//     // Remove focus from the button
-//     myButton.blur();
-//   });
-// });

@@ -32,6 +32,27 @@ const RegisterPage = () => {
 
   const onSubmit = (data) => {
     console.log("Register data:", data, "Profile image:", profileImage);
+
+    // Store user data in localStorage for game access
+    localStorage.setItem("username", data.username);
+    localStorage.setItem("fullName", data.fullName);
+    localStorage.setItem("country", data.country);
+
+    // Get country code from countries data
+    import("@/data/countries.json").then((countriesModule) => {
+      const countries = countriesModule.default;
+      const selectedCountry = countries.find((c) => c.name === data.country);
+      if (selectedCountry) {
+        localStorage.setItem("countryCode", selectedCountry.code);
+      }
+    });
+
+    if (profileImage) {
+      localStorage.setItem("avatar", profileImage);
+    }
+
+    console.log("✅ User data saved to localStorage for game");
+
     // API integration will go here
   };
 

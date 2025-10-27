@@ -1,26 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Rally Typer</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.7" type="text/css" />
-
-    <!-- Firebase SDK -->
-    <script
-      type="module"
-      src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"
-    ></script>
-    <script
-      type="module"
-      src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"
-    ></script>
-    <script
-      type="module"
-      src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"
-    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rally Typer - Game</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.8" type="text/css" />
   </head>
 
   <body>
+    <!-- Loading Screen -->
     <div class="loading">
       <h3>Loading...</h3>
       <div class="loading-bar-container">
@@ -28,58 +16,75 @@
       </div>
     </div>
 
-    <canvas id="gameCanvas"> </canvas>
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
 
+    <!-- Typing Text Display -->
     <div class="text-div">
       <div class="text-content">-Press any key to start-</div>
       <div class="text-cover"></div>
     </div>
 
+    <!-- Game Results Screen -->
     <div class="ending-screen">
-      <h2>1st - GOLD</h2>
-
+      <h2>1st Place!</h2>
       <p class="stats">Time:</p>
       <p class="stats">Accuracy:</p>
       <p class="stats">GWAM:</p>
       <p class="stats">Personal Best GWAM:</p>
-      <button onclick=" goBackToMenu() ">Back to menu</button>
-      <button onclick=" resetGame() ">Play Again</button>
+      <button onclick="goBackToMenu()">Back to Home</button>
+      <button onclick="resetGame()">Play Again</button>
       <div class="clear"></div>
-
-      <form class="leaderboard-form">
-        <label for="country">Country: </label>
-        <input type="text" name="country" placeholder="country" required />
-        <label for="username">Username: </label>
-        <input type="text" name="username" placeholder="username" required />
-        <button type="submit">Submit to leaderboard</button>
-      </form>
     </div>
 
+    <!-- Countdown Timer -->
     <div class="countdown">3</div>
-    <button onclick=" goBackToMenu() " id="back-to-menu">Back to menu</button>
 
-    <script type="module" src="assets/js/firebase.js?v=2.0"></script>
-    <script type="module" src="assets/js/leaderboard.js?v=2.0"></script>
+    <!-- Back to Menu Button -->
+    <button onclick="goBackToMenu()" id="back-to-menu">Back to Home</button>
+
+    <!-- Firebase SDK -->
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"
+    ></script>
+
+    <!-- Game Scripts -->
+    <script type="module" src="assets/js/firebase.js?v=2.1"></script>
+    <script type="module" src="assets/js/leaderboard.js?v=2.2"></script>
     <script src="assets/js/stats.min.js?v=2.0"></script>
     <script src="assets/js/three.min.js?v=2.0"></script>
     <script src="assets/js/GLTFLoader.js?v=2.0"></script>
-
     <script src="assets/js/Data_Variables.js?v=2.1"></script>
-    <script src="assets/js/Game_UI.js?v=2.1"></script>
-    <script src="assets/js/Main.js?v=2.0"></script>
+    <script src="assets/js/Game_UI.js?v=2.3"></script>
+    <script src="assets/js/Main.js?v=2.1"></script>
 
-    <!-- Auto-start game with difficulty from URL -->
+    <!-- Game Initialization -->
     <script>
       window.addEventListener("DOMContentLoaded", function () {
-        // Get difficulty from URL parameter
+        // Get user data from sessionStorage (passed from React app)
+        const userDataStr = sessionStorage.getItem("gameUserData");
+        const gameDifficulty = sessionStorage.getItem("gameDifficulty");
+
+        if (userDataStr) {
+          window.gameUserData = JSON.parse(userDataStr);
+        }
+
+        // Get difficulty from URL parameter or sessionStorage
         const urlParams = new URLSearchParams(window.location.search);
-        const difficultyParam = urlParams.get("difficulty");
+        const difficultyParam = urlParams.get("difficulty") || gameDifficulty;
 
         if (difficultyParam !== null) {
-          // Convert to number and start game automatically
           const difficultyLevel = parseInt(difficultyParam, 10);
-          if (difficultyLevel >= 0 && difficultyLevel <= 4) {
-            // Hide main menu and start game
+          if (
+            difficultyLevel >= 0 &&
+            difficultyLevel <= 4 &&
+            typeof chooseDifficultyLevel !== "undefined"
+          ) {
             chooseDifficultyLevel(difficultyLevel);
           }
         }
