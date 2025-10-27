@@ -1,21 +1,22 @@
 {
   "buildCommand": "npm install --legacy-peer-deps && npm run build",
-  "routes": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
     {
-      "src": "/game/assets/(.*)",
-      "dest": "/game/assets/$1"
-    },
+      "source": "/game/assets/js/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
     {
-      "src": "/game/index.html",
-      "dest": "/game/index.html"
-    },
-    {
-      "src": "/game",
-      "dest": "/game/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/((?!game/).*)",
+      "destination": "/index.html"
     }
   ]
 }
