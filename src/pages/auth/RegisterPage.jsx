@@ -49,7 +49,7 @@ const RegisterPage = () => {
   return (
     <div
       style={{ fontFamily: "Lato, sans-serif" }}
-      className="w-full max-w-2xl bg-brand-white-1 border-white rounded-2xl shadow-2xl p-8"
+      className="w-full max-w-2xl bg-brand-cream border-white rounded-2xl shadow-2xl p-8"
     >
       {/* Header */}
       <div className="text-center mb-6 mt-4">

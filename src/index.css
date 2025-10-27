@@ -56,6 +56,7 @@
   --sidebar-ring: oklch(0.708 0 0);
   --brand: #f25a06;
   --brand-cream: #fffaec;
+  --brand-light-cream: #fffef4;
   --brand-dark-1: #1a130b;
   --brand-dark-2: #302d29;
   --brand-dark-3: #2b231b;
@@ -106,7 +107,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-brand: var(--brand);
-  --color-brand-white-1: var(--brand-cream);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-light-cream: var(--brand-light-cream);
   --color-brand-dark-1: var(--brand-dark-1);
   --color-brand-dark-2: var(--brand-dark-2);
   --color-brand-dark-3: var(--brand-dark-3);

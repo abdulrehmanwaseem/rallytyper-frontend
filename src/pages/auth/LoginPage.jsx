@@ -36,7 +36,7 @@ const LoginPage = () => {
   return (
     <div
       style={{ fontFamily: "Lato, sans-serif" }}
-      className="w-full max-w-lg bg-brand-white-1 border-white rounded-xl shadow-xl p-8"
+      className="w-full max-w-lg bg-brand-cream border-white rounded-xl shadow-xl p-8"
     >
       {/* Header */}
       <div className="text-center mb-6 mt-4">
