@@ -67,7 +67,7 @@ const TopPlayersCard = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-[#F25A06] to-[#d94d05] rounded-3xl p-6 shadow-2xl w-full max-w-md">
+    <div className="bg-linear-to-b from-[#F25A06] to-[#d94d05] rounded-3xl p-6 shadow-2xl w-full max-w-md">
       {/* Header */}
       <div className="text-center mb-6">
         <h2 className="text-white text-2xl font-bold uppercase tracking-wide">
@@ -145,7 +145,7 @@ const TopPlayersCard = () => {
                 {player.wpm}
               </div>
               <div className="flex justify-end">
-                <div className="h-1 w-16 bg-gradient-to-r from-[#F25A06] to-transparent rounded-full"></div>
+                <div className="h-1 w-16 bg-linear-to-r from-[#F25A06] to-transparent rounded-full"></div>
               </div>
             </div>
           ))}

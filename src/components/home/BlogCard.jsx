@@ -49,7 +49,7 @@ const BlogCard = ({ blog }) => {
           </h3>
 
           {/* Divider Line */}
-          <div className="h-[2px] w-full bg-gradient-to-r from-brand via-brand/50 to-transparent mb-3 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+          <div className="h-0.5 w-full bg-linear-to-r from-brand via-brand/50 to-transparent mb-3 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
           {/* Author Info */}
           <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ const BlogCard = ({ blog }) => {
 
         {/* Corner Accent (appears on hover) */}
         <div
-          className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-brand/20 to-transparent transform origin-top-right transition-all duration-500 ${
+          className={`absolute top-0 right-0 w-20 h-20 bg-linear-to-br from-brand/20 to-transparent transform origin-top-right transition-all duration-500 ${
             isHovered ? "scale-100 opacity-100" : "scale-0 opacity-0"
           }`}
           style={{ clipPath: "polygon(100% 0, 100% 100%, 0 0)" }}
