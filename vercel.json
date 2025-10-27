@@ -1,4 +1,13 @@
 {
   "buildCommand": "npm install --legacy-peer-deps && npm run build",
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    {
+      "source": "/game/:path*",
+      "destination": "/game/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

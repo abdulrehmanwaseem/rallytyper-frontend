@@ -20,11 +20,12 @@ export default defineConfig({
         game: path.resolve(__dirname, "game/index.html"),
       },
     },
+    // Ensure assets are properly organized
+    assetsDir: "assets",
   },
   server: {
     fs: {
-      // Allow serving files from the game directory
-      allow: [".", "game"],
+      allow: [".", "game", "public"],
     },
   },
 });
